@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InvoiceFlow
+
+Smart invoice and receipt management for modern businesses. A marketing landing page built with Next.js 16, React 19, and Tailwind CSS v4.
+
+## Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **UI**: React 19 + Tailwind CSS v4
+- **Fonts**: Fraunces (serif, display) + DM Sans (sans-serif, body)
+- **Language**: TypeScript
+- **Linting**: ESLint 9 (flat config)
+
+## Features
+
+- Dark / light / system theme with persistence and no flash
+- Google, Facebook, and Apple OAuth sign-in page
+- Responsive marketing landing page with 6 sections
+- Scroll-to-top, smooth anchor navigation, scroll-aware navbar
+- Editorial design with grain texture, staggered animations, animated icons
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.tsx                  # Root: fonts, theme provider, anti-flash script
+│   ├── globals.css                 # Design tokens, animations, utilities
+│   ├── (marketing)/
+│   │   ├── layout.tsx              # Navbar + footer + scroll-to-top
+│   │   └── page.tsx                # Homepage (composes sections)
+│   └── (auth)/
+│       ├── layout.tsx              # Minimal chrome (logo + theme toggle)
+│       └── login/
+│           └── page.tsx            # OAuth + email sign-in
+├── components/
+│   ├── icons.tsx                   # 22 SVG icon components
+│   ├── ui/                         # Primitives (button, badge, logo, etc.)
+│   ├── layout/                     # Chrome (navbar, footer, scroll-to-top)
+│   ├── sections/                   # Page content (hero, features, pricing, etc.)
+│   └── theme/                      # Theme provider + toggle
+└── lib/
+    └── data.ts                     # All content data (nav links, pricing, testimonials)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path | Description |
+|------|-------------|
+| `/` | Marketing landing page (6 sections) |
+| `/login` | Sign-in page (OAuth + email) |
 
-## Deploy on Vercel
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Hero — Light
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Hero light](./docs/screenshots/hero-light.png)
+
+### Hero — Dark
+
+![Hero dark](./docs/screenshots/hero-dark.png)
+
+### Sign In
+
+![Sign in](./docs/screenshots/login.png)
+
+To add your own screenshots, drop PNG files into `docs/screenshots/` and reference them with `![alt](./docs/screenshots/filename.png)`. Keep files under 1 MB. Use the Snipping Tool (`Win+Shift+S`) or browser DevTools device toolbar to capture specific viewports.
